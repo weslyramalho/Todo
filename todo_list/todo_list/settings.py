@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'tailwind',
+    'theme',
 ]
 
 MIDDLEWARE = [
@@ -100,6 +101,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+TAILWIND_APP_NAME = 'theme'
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
@@ -115,10 +117,17 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
+NPM_BIN_PATH = "C:/Program Files/nodejs/npm.cmd"
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
