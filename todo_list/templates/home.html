@@ -4,10 +4,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>{{title}}</title>
     {% tailwind_css %}
 </head>
 <body>
+    {% if messages %}
+    {% for message in messages %}
+    <div class="">
+        <strong>{{message}}</strong>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    <div class="row-auto">
+        <h1><i>__TODO LIST__</i></h1>
+        <hr />
+    </div>
+    <div class="">
+        <div>
+            {% for i in list %}
+            <div >
+                <div><b>{{i.title}}</b></div>
+                <hr/>
+                {{i.date}}
+                <hr />
+                {{i.details}}
+                <br />
+                <br />
+                <form action="/del/{{i.id}}" method="post" style="padding-right: 4%; padding-bottom: 3%;">
+                    {% csrf_token %}
+                    <button value="remove" type="submit" class="bottom-1" style="float: right;"><span class=""></span> remove</button>
+                </form>
+            </div>
+            {% endfor %}
+        </div>
+        <div></div>
+        <div>
+            <div>
+                <form method="post">
+                    {% csrf_token %}
+                    {{forms}}
+                    <div>
+                        <input type="submit" value="submit" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
     <h1>Ola mundo</h1>
 </body>
 </html>
