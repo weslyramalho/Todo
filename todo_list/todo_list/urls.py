@@ -16,14 +16,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from app.views import addTodo
 from django.conf import settings
 from django.conf.urls.static import static
-from app import views
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('add-todo/', addTodo, name='addtodo'),
+    #path('', views.index, name="todo"),
     path("", include("app.urls")),
-    path('del/<str:item_id>', views.remove, name="del")
+    #path('del/<str:item_id>', views.remove, name="del"),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings)
