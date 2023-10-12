@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from app.views import addTodo
+from app.views import addTodo, home
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -25,8 +25,9 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('add-todo/', addTodo, name='addtodo'),
+    path('', home)
     #path('', views.index, name="todo"),
-    path("", include("app.urls")),
+    #path("", include("app.urls")),
     #path('del/<str:item_id>', views.remove, name="del"),
 ]
 if settings.DEBUG:
