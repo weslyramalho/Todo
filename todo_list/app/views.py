@@ -27,3 +27,15 @@ def editTodo(request, pk):
                 return render(request, 'todo/partials/todo.html', {'todo': todo})
         return render(request, 'todo/partials/edit.html', {'todo': todo})
 
+@require_http_methods(['PUT'])
+def updateTodo(request, pk):
+        todo =None
+        todo.is_done = True
+        todo.save()
+        return render(request, 'todo/partials/todo.html', {'todo': todo})
+
+@require_http_methods(['DELETE'])
+def deleteTodo(request, pk):
+        todo = Todo.objects.get(pk=pk)
+        todo.delete()
+        return HttpResponse()
